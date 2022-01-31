@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Book from "./Book";
+import PropTypes from "prop-types";
 
 const BooksSearch = (props) => {
   return (
@@ -32,5 +33,10 @@ const BooksSearch = (props) => {
     </div>
   );
 };
-
+BooksSearch.propTypes = {
+  books: PropTypes.array.isRequired,
+  closeSearch: PropTypes.func.isRequired,
+  onSelectChange: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+};
 export default BooksSearch;
