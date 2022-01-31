@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Book = (props) => {
   const { id, imageLinks, title, authors, shelf } = props.book;
@@ -10,13 +11,17 @@ const Book = (props) => {
           <div
             className="book-cover"
             style={{
-              backgroundImage: `url(${imageLinks?.thumbnail || imageLinks?.smallThumbnail})`,
+              backgroundImage: `url(${
+                imageLinks?.thumbnail || imageLinks?.smallThumbnail
+              })`,
             }}
-          >{!imageLinks ? "No Preview Available" : ''} </div>
+          >
+            {!imageLinks ? "No Preview Available" : ""}{" "}
+          </div>
           <div className="update-book-shelf">
             <select
               defaultValue={shelf}
-              onClick={(evt) => props.onSelectChange(evt, id)}
+              onChange={(evt) => props.onSelectChange(evt, id)}
             >
               <option value="move" disabled>
                 Move to...
@@ -36,5 +41,8 @@ const Book = (props) => {
     </li>
   );
 };
-
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  onSelectChange: PropTypes.func.isRequired,
+};
 export default Book;

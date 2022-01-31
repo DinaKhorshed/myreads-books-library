@@ -78,14 +78,13 @@ class BooksApp extends React.Component {
         if (Array.isArray(searchResult)) {
           searchResult.forEach(
             (book) =>
-            (book.shelf =
-              this.state.books.filter(
-                (storedBook) => storedBook.id === book.id
-              )[0]?.shelf || "none")
+              (book.shelf =
+                this.state.books.filter(
+                  (storedBook) => storedBook.id === book.id
+                )[0]?.shelf || "none")
           );
           this.setState({ booksSearchResult: searchResult });
         } else {
-          console.log("No search result");
           this.setState({ booksSearchResult: [] });
         }
       } else {
@@ -134,7 +133,9 @@ class BooksApp extends React.Component {
                 <div className="open-search">
                   <Link
                     to="/search"
-                    onClick={() => this.setState({ booksSearchResult: this.state.books })}
+                    onClick={() =>
+                      this.setState({ booksSearchResult: this.state.books })
+                    }
                   >
                     <button>Browse Books</button>
                   </Link>
